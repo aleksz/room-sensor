@@ -12,6 +12,8 @@
 #define CHILD_ID_CO2 2
 #define MY_NODE_ID 25
 
+#define MEANINGFUL_CO2_CHANGE 50
+
 #include "DHT.h"
 #include <SoftwareSerial.h>
 #include <MySensors.h> 
@@ -97,13 +99,14 @@ void loop() {
   }
 
   ppm = round(ppm / 10) * 10;
+  int ppmDiff = abs(ppm - lastPPM);
 
-  if (lastPPM != ppm) {
+  if (ppmDiff >= MEANINGFUL_CO2_CHANGE) {
     send(msgCO2.set(ppm, 1));
     lastPPM = ppm;  
   }
   
-  delay(180000);
+  delay(900000);
 }
 
 

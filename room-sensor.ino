@@ -1,11 +1,13 @@
-#define DHTPIN 2     // what pin we're connected to
+#define DHTPIN 7     // what pin we're connected to
 #define DHTTYPE DHT22   // DHT 22  (AM2302) 
-//#define MY_DEBUG
+#define MY_DEBUG
 #define MY_BAUD_RATE 38400
+#define MY_RF24_CE_PIN  2
+#define MY_RF24_CS_PIN  3
 #define MY_RADIO_NRF24
 
-#define MH_Z19_RX 7
-#define MH_Z19_TX 6
+#define MH_Z19_RX 9
+#define MH_Z19_TX 8
 
 #define CHILD_ID_HUM 0
 #define CHILD_ID_TEMP 1
@@ -149,4 +151,3 @@ int readCO2()
     return -1;
   }
 }
-
